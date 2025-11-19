@@ -30,8 +30,6 @@ def process_message():
                 "conversationId": conversation_id,
                 "sequence": sequence + 1,
                 "message": answer,
-                "senderType": "bot",
-                "source": "local"
             })
         else:
             print("ℹ️ Router clasificó como simple, pero no se encontró una respuesta local. Escalando a Llama.")
@@ -46,6 +44,4 @@ def process_message():
         "conversationId": conversation_id,
         "sequence": sequence + 1,
         "message": answer,
-        "senderType": "bot",
-        "source": "llm"
     })

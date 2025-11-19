@@ -7,7 +7,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
 
 DATA_PATH = Path("data/faq.csv")
-SIMPLE_CATEGORIES = {"ansiedad", "personal"}
+SIMPLE_CATEGORIES = {"ansiedad", "personal", "general"}
 
 def load_phrases():
     if not DATA_PATH.exists():
