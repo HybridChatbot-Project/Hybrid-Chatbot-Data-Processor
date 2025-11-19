@@ -61,7 +61,8 @@ def _build_prompt(message: str, context: Dict[str, str]) -> str:
         "Usa un tono empático, ofrece pasos concretos y refuerza que el usuario no está solo. "
         "Mantén el hilo de la conversación: no reinicies el tema ni preguntes de nuevo lo ya dicho; responde al último mensaje en contexto. "
         "No inventes diálogos del usuario; escribe únicamente tu respuesta. "
-        "Si detectas riesgo, anima a contactar líneas de ayuda locales."
+        "Si detectas riesgo, anima a contactar líneas de ayuda locales. "
+        "Entrega una única respuesta breve (máximo 80 palabras), sin listas ni recordatorios de reglas internas, ni guiones de conversación previos."
     )
     history = ""
     if context.get("history"):
