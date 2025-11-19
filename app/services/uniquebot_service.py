@@ -27,7 +27,7 @@ FALLBACK_FAQ = [
 
 DATA_PATH = Path(__file__).resolve().parents[2] / "data" / "faq.csv"
 STOPWORDS = set(stopwords.words("spanish"))
-SIMILARITY_THRESHOLD = 0.16
+SIMILARITY_THRESHOLD = 0.23
 
 def _load_faqs():
     faqs = []
