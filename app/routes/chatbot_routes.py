@@ -12,6 +12,7 @@ def process_message():
     message = data.get("message", "")
     conversation_id = data.get("conversationId")
     sequence = data.get("sequence")
+    user_name = data.get("userName")
 
     # Validación mínima
     if not message or not conversation_id:
@@ -24,20 +25,25 @@ def process_message():
     # Si es simple → responder localmente
     if prediction == "simple":
         answer = handle_local_message(message)
-        return jsonify({
-            "conversationId": conversation_id,
-            "sequence": sequence + 1,
-            "message": answer,
-            "senderType": "bot",
-            "source": "local"
-        })
+        if answer:
+            return jsonify({
+                "conversationId": conversation_id,
+                "sequence": sequence + 1,
+                "message": answer,
+                "senderType": "bot",
+            })
+        else:
+            print("ℹ️ Router clasificó como simple, pero no se encontró una respuesta local. Escalando a Llama.")
 
     # Caso contrario → enviar al modelo Llama 3.2
-    answer = handle_llama_message(message)
+    answer = handle_llama_message(
+        message=message,
+        user_name=user_name,
+        conversation_id=conversation_id
+    )
     return jsonify({
         "conversationId": conversation_id,
         "sequence": sequence + 1,
         "message": answer,
         "senderType": "bot",
-        "source": "llm"
     })
