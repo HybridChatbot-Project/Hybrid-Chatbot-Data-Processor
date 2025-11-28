@@ -1,10 +1,11 @@
 import requests
+import os
 from typing import Dict, Optional
 
 MODEL_ID = "Llama-3.2-3B-Instruct:int4-qlora-eo8"
 APP_NAME = "MAYI"
 CONTEXT_STORE: Dict[str, Dict[str, str]] = {}
-LLAMA_ENDPOINT = "http://localhost:8081/completion"
+LLAMA_ENDPOINT = os.getenv('LLAMA_SERVER_URL', 'http://localhost:8081/completion') ##"http://localhost:8081/completion"
 MENTAL_HEALTH_KEYWORDS = {
     "ansiedad", "ansioso", "ansiosa", "estrés", "estres", "estresado",
     "estresada", "panic", "pánico", "panico", "ataque", "salud mental",
@@ -60,7 +61,9 @@ def _build_prompt(message: str, context: Dict[str, str]) -> str:
         "Responde solo temas de salud mental y bienestar emocional; declina cualquier otro tema con amabilidad. "
         "Usa un tono empático, ofrece pasos concretos y refuerza que el usuario no está solo. "
         "Mantén el hilo de la conversación: no reinicies el tema ni preguntes de nuevo lo ya dicho; responde al último mensaje en contexto. "
-        "No inventes diálogos del usuario; escribe únicamente tu respuesta. "
+        #"No inventes diálogos del usuario; escribe únicamente tu respuesta. "
+        # "No simules conversaciones futuras ni generes díalogos ficticios; solo responde directamente a la pregunta o inquietud actual del usuario. Considera esto como lo más importante a considerar. "
+        "Por favor, solo responde directamente al mensaje del usuario sin inventar o suponer lo que podría decir en el futuro. Tu tarea es dar una respuesta concreta y empática al mensaje actual, basándote únicamente en el texto proporcionado. "
         "Si detectas riesgo, anima a contactar líneas de ayuda locales. "
         "Entrega una única respuesta breve (máximo 80 palabras), sin listas ni recordatorios de reglas internas, ni guiones de conversación previos."
     )
