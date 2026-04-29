@@ -24,6 +24,7 @@ flatbuffers==24.3.25
 fonttools==4.39.3
 fsspec==2024.6.1
 graphviz==0.20.1
+groq==1.2.0
 h5py==3.11.0
 haversine==2.8.0
 idna==3.7
