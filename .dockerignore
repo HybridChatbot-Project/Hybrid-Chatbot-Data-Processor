@@ -1,0 +1,13 @@
+.git/
+.venv/
+entorno/
+no/
+si/
+aún/
+creas/
+un/
+[#]/
+**/__pycache__/
+*.pyc
+.DS_Store
+models/llama/

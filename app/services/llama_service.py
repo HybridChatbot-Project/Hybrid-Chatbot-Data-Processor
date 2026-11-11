@@ -1,10 +1,11 @@
+import os
 import requests
 from typing import Dict, Optional
 
 MODEL_ID = "Llama-3.2-3B-Instruct:int4-qlora-eo8"
 APP_NAME = "MAYI"
 CONTEXT_STORE: Dict[str, Dict[str, str]] = {}
-LLAMA_ENDPOINT = "http://localhost:8081/completion"
+LLAMA_ENDPOINT = os.getenv("LLAMA_ENDPOINT", "http://localhost:8081/completion")
 MENTAL_HEALTH_KEYWORDS = {
     "ansiedad", "ansioso", "ansiosa", "estrés", "estres", "estresado",
     "estresada", "panic", "pánico", "panico", "ataque", "salud mental",
